@@ -1,0 +1,37 @@
+package com.hitchh1k3rsguide.ld27.gameplay;
+
+import com.hitchh1k3rsguide.ld27.Enums;
+import com.hitchh1k3rsguide.ld27.graphics.SpriteFromSpriteSheet;
+import com.hitchh1k3rsguide.ld27.graphics.SpriteSheet;
+import com.hitchh1k3rsguide.ld27.utilities.Vec2DPoint;
+
+public class Item
+{
+
+	public static final Item cheese = new Item("item.cheese", Enums.itemTypes.FOOD);
+	public static final Item burger = new Item("item.burger", Enums.itemTypes.FOOD);
+	public static final Item chicken = new Item("item.chicken", Enums.itemTypes.FOOD);
+	public static final Item sushi = new Item("item.sushi", Enums.itemTypes.FOOD);
+	public static final Item fuse = new Item("item.fuse", Enums.itemTypes.CIRCUIT);
+	public static final Item towel = new Item("item.towel", Enums.itemTypes.PERSONAL);
+	public static final Item eye = new Item("item.eye", Enums.itemTypes.PERSONAL);
+	public static final Item mop = new Item("item.mop", Enums.itemTypes.PERSONAL);
+	public static final Item radio = new Item("item.radio", Enums.itemTypes.GENERIC);
+
+
+	private SpriteFromSpriteSheet sprite;
+	private Enums.itemTypes type;
+
+	public Item(String sprite, Enums.itemTypes type)
+	{
+		this.sprite = new SpriteFromSpriteSheet(SpriteSheet.sprites, sprite, 0, 0, 16, 16);
+		this.type = type;
+	}
+
+	public void drawAtSlot(int zone, int slot)
+	{
+		Vec2DPoint point = ZoneData.getSlotVec(zone, slot);
+		sprite.drawAt((int)point.getDX(), (int)point.getDY());
+	}
+
+}
